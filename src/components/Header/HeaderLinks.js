@@ -9,12 +9,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
-// @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
-
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
-import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
@@ -25,18 +21,29 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
+        <Link to="/" className={classes.navLink}>
+          Home
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link to="/" className={classes.navLink}>
+          My Movies
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link to="/" className={classes.navLink}>
+          My Series
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
-          buttonText="Explore"
+          buttonText="Browse"
           buttonProps={{
             className: classes.navLink,
             color: "transparent"
           }}
-          buttonIcon={Apps}
           dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
-              All Content
-            </Link>,
             <Link to="/explore/movies" className={classes.dropdownLink}>
               Movies
             </Link>,

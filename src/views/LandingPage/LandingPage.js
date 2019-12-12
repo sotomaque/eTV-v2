@@ -47,7 +47,7 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Your Story Starts With Us.</h1>
+              <h1 className={classes.title}>Made for the avid Streamer</h1>
               <h4>
                Track the movies and series you've watched. Create playlists (i.e. Christmas must-watch!).
                Rate your favories. Discover something new to watch.
@@ -71,7 +71,6 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <ProductSection />
           <TeamSection />
-          <WorkSection />
         </div>
       </div>
       <Footer />

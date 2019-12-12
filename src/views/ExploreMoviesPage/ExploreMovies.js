@@ -18,6 +18,9 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 import SectionMoviesInTheaters from "./Sections/SectionMoviesInTheaters.js";
+import SectionPopularRatedRMovies from "./Sections/SectionPopularRatedRMovies.js";
+import SectionPopularKidsMovies from "./Sections/SectionPopularKidsMovies.js";
+import SectionPopularDramasOfThisYear from "./Sections/SectionPopularDramasOfThisYear.js";
 
 const useStyles = makeStyles(styles);
 
@@ -42,7 +45,7 @@ export default function ExploreMovies(props) {
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1 className={classes.title}>eTV</h1>
+                <h1 className={classes.title}>Explore Movies</h1>
                 <h3 className={classes.subtitle}>
                   Keep track of your favorite Movies
                 </h3>
@@ -54,6 +57,9 @@ export default function ExploreMovies(props) {
 
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionMoviesInTheaters />
+        <SectionPopularRatedRMovies />
+        <SectionPopularKidsMovies />
+        <SectionPopularDramasOfThisYear />
       </div>
       <Footer />
     </div>
