@@ -42,11 +42,13 @@ export default function SectionMoviesGrid() {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
+      { isError ? null : 
         <div id="images">
           <div className={classes.title}>
             <h2>Popular Movies</h2>
           </div>
           <br />
+          { isLoading ? <div>Loading...</div> : 
           <GridContainer>
             {
               data.results && 
@@ -76,8 +78,9 @@ export default function SectionMoviesGrid() {
               })
             }
           </GridContainer>
-          <GridContainer />
+          }
         </div>
+      }
       </div>
     </div>
   );

@@ -42,11 +42,13 @@ export default function SectionSeriesGrid() {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
+      { isError ? null : 
         <div id="images">
           <div className={classes.title}>
             <h2>Popular Series</h2>
           </div>
           <br />
+          { isLoading ? <div>Loading...</div> : 
           <GridContainer>
             {
               data.results && 
@@ -74,8 +76,9 @@ export default function SectionSeriesGrid() {
               })
             }
           </GridContainer>
-          <GridContainer />
+          }
         </div>
+      }
       </div>
     </div>
   );

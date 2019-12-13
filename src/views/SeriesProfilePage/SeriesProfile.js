@@ -23,6 +23,7 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
 //sections
 import SectionSeriesCast from './Sections/SeriesCastSection';
+import SectionSeriesSeasons from './Sections/SeriesSeasonsSection';
 
 const useStyles = makeStyles(styles);
 
@@ -159,6 +160,7 @@ export default function SeriesProfile(props) {
                   </div>
                 }
                 <SectionSeriesCast seriesId={seriesId} />
+                <SectionSeriesSeasons seriesId={seriesId} />
               </div>
             </div>
           </div>
