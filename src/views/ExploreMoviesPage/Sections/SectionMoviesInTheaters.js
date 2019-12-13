@@ -56,7 +56,6 @@ export default function SectionMoviesInTheaters() {
                 .filter((movie, index) => index < 18)
                 .map( ({original_title, poster_path, id}) => {
                   return (
-                  
                     <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
                       <Link to={`/movies/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                       <img

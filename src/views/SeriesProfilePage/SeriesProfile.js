@@ -21,6 +21,9 @@ import Parallax from "components/Parallax/Parallax.js";
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
+//sections
+import SectionSeriesCast from './Sections/SeriesCastSection';
+
 const useStyles = makeStyles(styles);
 
 export default function SeriesProfile(props) {
@@ -154,7 +157,9 @@ export default function SeriesProfile(props) {
                       </GridItem>
                     </GridContainer>
                   </div>
-                }</div>
+                }
+                <SectionSeriesCast seriesId={seriesId} />
+              </div>
             </div>
           </div>
         </div>

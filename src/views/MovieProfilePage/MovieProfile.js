@@ -158,7 +158,7 @@ export default function MovieProfile(props) {
                       </GridContainer>
                     </div>
                   }
-                  <SectionMovieCast movieId={movieId}/>
+                  <SectionMovieCast movieId={movieId} />
                 </div>
               </div>
             </div>
