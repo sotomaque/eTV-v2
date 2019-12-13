@@ -13,11 +13,11 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/movie
 
 const useStyles = makeStyles(styles);
 
-export default function SectionPopularKidsMovies() {
+export default function SectionPopularKidsSeries() {
   const classes = useStyles();
   const [data, setData] = useState({ hits: [] });
   const [url, setUrl] = useState(
-    'https://api.themoviedb.org/3/discover/movie?api_key=c9f3c719e4cce4a021ff37d2e89d43ba&certification_country=US&certification.lte=G&sort_by=popularity.desc',
+    'https://api.themoviedb.org/3/discover/tv?api_key=c9f3c719e4cce4a021ff37d2e89d43ba&certification_country=US&certification.lte=G&sort_by=popularity.desc',
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -46,7 +46,7 @@ export default function SectionPopularKidsMovies() {
       <div className={classes.container}>
         <div id="images">
           <div className={classes.title}>
-            <h2>Popular Kids Movies</h2>
+            <h2>Popular Kids Series</h2>
           </div>
           <br />
           { isLoading ? <div>Loading...</div> : 
@@ -59,7 +59,7 @@ export default function SectionPopularKidsMovies() {
                 return (
                 
                   <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
-                    <Link to={`/movies/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                    <Link to={`/series/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                     <img
                       src={`${baseImgUrl}${poster_path}`}
                       alt="..."

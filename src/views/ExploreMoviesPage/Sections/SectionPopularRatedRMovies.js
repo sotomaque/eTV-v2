@@ -40,14 +40,16 @@ export default function SectionPopularRatedRMovies() {
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
 
   return (
-    <div className={classes.section}>
-      <div className={classes.container}>
-        { isError ? <div>Something went wrong loading sectionPopularRatedRMovies...</div> : 
+    <div>
+      { isError ? null : 
+      <div className={classes.section}>
+        <div className={classes.container}>
           <div id="images">
             <div className={classes.title}>
               <h2>Popular Rated R Movies</h2>
             </div>
             <br />
+            { isLoading ? <div>Loading...</div> : 
             <GridContainer>
               {
                 data.results && 
@@ -77,10 +79,11 @@ export default function SectionPopularRatedRMovies() {
                 })
               }
             </GridContainer>
-            <GridContainer />
+            }
           </div>
-        }
+        </div>
       </div>
+    }
     </div>
   );
 }

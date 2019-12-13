@@ -115,7 +115,7 @@ export default function MovieProfile(props) {
                               .filter((genre, index) => index < 1)
                               .map((genre, index) => {
                                 return (
-                              <h6 key={index}>{genre.name} | {Math.floor(data.runtime/60)} hrs {data.runtime % 60} mins | {moment(data.release_date).format("MMM Do YY")}</h6>
+                                  <h6 key={index}>{genre.name} | {Math.floor(data.runtime/60)} hrs {data.runtime % 60} mins | {moment(data.release_date).format("MMM Do YY")}</h6>
                                 )
                               })
                             }

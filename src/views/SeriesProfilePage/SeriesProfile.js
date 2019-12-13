@@ -103,6 +103,7 @@ export default function SeriesProfile(props) {
                               } />
                           </div>
                           <div className={classes.name}>
+                            <h3 className={classes.rating}>{data.vote_average} stars</h3>
                             <h3 className={classes.title}>{data.name}</h3>
                             {
                               data.tagline ? <h4 className={classes.subtitle}>{data.tagline}</h4> : null
@@ -112,7 +113,7 @@ export default function SeriesProfile(props) {
                               .filter((genre, index) => index < 1)
                               .map((genre, index) => {
                                 return (
-                                  <h6 key={index}>{genre.name}</h6>
+                                  <h6 key={index}>{genre.name} | {data.seasons.length} Seasons</h6>
                                 )
                               })
                             }
