@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import moment from 'moment';
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -89,7 +91,9 @@ export default function MovieProfile(props) {
                         classes.imgFluid
                       } />
                   </div>
+                 
                   <div className={classes.name}>
+                    <h3 className={classes.rating}>{data.vote_average} stars</h3>
                     <h3 className={classes.title}>{data.original_title}</h3>
                     {
                       data.tagline ? <h4 className={classes.subtitle}>{data.tagline}</h4> : null
@@ -99,7 +103,7 @@ export default function MovieProfile(props) {
                       .filter((genre, index) => index < 1)
                       .map((genre, index) => {
                         return (
-                          <h6 key={index}>{genre.name}</h6>
+                      <h6 key={index}>{genre.name} | {Math.floor(data.runtime/60)} hrs {data.runtime % 60} mins | {moment(data.release_date).format("MMM Do YY")}</h6>
                         )
                       })
                     }

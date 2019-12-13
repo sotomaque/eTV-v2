@@ -19,6 +19,9 @@ const profilePageStyle = {
     color: "#999",
     textAlign: "center !important"
   },
+  rating: {
+    marginTop: "-100px"
+  },
   name: {
     marginTop: "-80px"
   },

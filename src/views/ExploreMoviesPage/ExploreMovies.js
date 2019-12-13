@@ -24,6 +24,17 @@ const useStyles = makeStyles(styles);
 export default function ExploreMovies(props) {
   const classes = useStyles();
   const { ...rest } = props;
+
+  var arr = [<SectionMoviesInTheaters />,
+    <SectionPopularRatedRMovies />,
+    <SectionPopularKidsMovies />,
+    <SectionPopularDramasOfThisYear />
+  ];
+
+  function randomize(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
   return (
     <div>
       <Header
@@ -54,10 +65,7 @@ export default function ExploreMovies(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionMoviesInTheaters />
-        <SectionPopularRatedRMovies />
-        <SectionPopularKidsMovies />
-        <SectionPopularDramasOfThisYear />
+        {randomize(arr)}
       </div>
       
       <Footer />
