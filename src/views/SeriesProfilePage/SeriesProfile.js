@@ -73,74 +73,90 @@ export default function SeriesProfile(props) {
         }}
         {...rest}
       />
-      <Parallax small filter image={backdropUrl} />
-      <div className={classNames(classes.main, classes.mainRaised)}>
+      { isError ? 
         <div>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={6}>
-                <div className={classes.profile}>
-                  <div>
-                    <img src={`${baseImgUrl}${data.poster_path}`} alt={data.original_title} className={
-                        classes.imgRaised +
-                        " " +
-                        classes.imgRounded +
-                        " " +
-                        classes.imgFluid
-                      } />
-                  </div>
-                  <div className={classes.name}>
-                    <h3 className={classes.title}>{data.name}</h3>
-                    {
-                      data.tagline ? <h4 className={classes.subtitle}>{data.tagline}</h4> : null
-                    }
-                    {
-                      data.genres && data.genres
-                      .filter((genre, index) => index < 1)
-                      .map((genre, index) => {
-                        return (
-                          <h6 key={index}>{genre.name}</h6>
-                        )
-                      })
-                    }
-                    <Button justIcon link className={classes.margin5} href={data.homepage} target="_blank">
-                      <i className={"fa fa-link"} />
-                    </Button>
-                  </div>
-                </div>
-              </GridItem>
-            </GridContainer>
-            <div className={classes.description}>
-              <p>
-               {data.overview}
-              </p>
+          <Parallax small filter image={require("assets/img/landing-bg.jpg")} />
+          <div className={classNames(classes.main, classes.mainRaised)}>
+            <div className={classes.container}>
+              <div className={classes.description}><p>Error...</p></div>
             </div>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
-                <NavPills
-                  alignCenter
-                  color="primary"
-                  tabs={[
-                    {
-                      tabButton: "Like",
-                      tabIcon: ThumbUp
-                     
-                    },
-                    {
-                      tabButton: "Rate",
-                      tabIcon: RateReview
-                    },
-                    {
-                      tabButton: "Add to List",
-                      tabIcon: Add
-                    }
-                  ]}
-                />
-              </GridItem>
-            </GridContainer>
+          </div>
+        </div>: 
+        <div>
+          <Parallax small filter image={backdropUrl} />
+          <div className={classNames(classes.main, classes.mainRaised)}>
+            <div>
+              <div className={classes.container}>
+                { isLoading ? 
+                  <div className={classes.description}><p>Loading...</p></div> :
+                  <div>
+                    <GridContainer justify="center">
+                      <GridItem xs={12} sm={12} md={6}>
+                        <div className={classes.profile}>
+                          <div>
+                            <img src={`${baseImgUrl}${data.poster_path}`} alt={data.original_title} className={
+                                classes.imgRaised +
+                                " " +
+                                classes.imgRounded +
+                                " " +
+                                classes.imgFluid
+                              } />
+                          </div>
+                          <div className={classes.name}>
+                            <h3 className={classes.title}>{data.name}</h3>
+                            {
+                              data.tagline ? <h4 className={classes.subtitle}>{data.tagline}</h4> : null
+                            }
+                            {
+                              data.genres && data.genres
+                              .filter((genre, index) => index < 1)
+                              .map((genre, index) => {
+                                return (
+                                  <h6 key={index}>{genre.name}</h6>
+                                )
+                              })
+                            }
+                            <Button justIcon link className={classes.margin5} href={data.homepage} target="_blank">
+                              <i className={"fa fa-link"} />
+                            </Button>
+                          </div>
+                        </div>
+                      </GridItem>
+                    </GridContainer>
+                    <div className={classes.description}>
+                      <p>
+                      {data.overview}
+                      </p>
+                    </div>
+                    <GridContainer justify="center">
+                      <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
+                        <NavPills
+                          alignCenter
+                          color="primary"
+                          tabs={[
+                            {
+                              tabButton: "Like",
+                              tabIcon: ThumbUp
+                            
+                            },
+                            {
+                              tabButton: "Rate",
+                              tabIcon: RateReview
+                            },
+                            {
+                              tabButton: "Add to List",
+                              tabIcon: Add
+                            }
+                          ]}
+                        />
+                      </GridItem>
+                    </GridContainer>
+                  </div>
+                }</div>
+            </div>
           </div>
         </div>
-      </div>
+      }
       <Footer />
     </div>
   );

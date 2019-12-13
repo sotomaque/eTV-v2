@@ -10,13 +10,8 @@
 
 ## Table of Contents
 
-* [Quick Start](#quick-start)
 * [File Structure](#file-structure)
 * [Licensing](#licensing)
-
-
-## Quick start
-- [Download from Github](https://github.com/creativetimofficial/material-kit-react/archive/master.zip).
 
 
 ## File Structure
