@@ -1,22 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
 import classNames from "classnames";
-// react components for routing our app without refresh
-import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 // core components
 import Header from "components/Header/Header.js";
+import HeaderLinks from "components/Header/HeaderLinks.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-
 import Parallax from "components/Parallax/Parallax.js";
-// sections for this page
-import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
+// sections for this page
 import SectionMoviesInTheaters from "./Sections/SectionMoviesInTheaters.js";
 import SectionPopularRatedRMovies from "./Sections/SectionPopularRatedRMovies.js";
 import SectionPopularKidsMovies from "./Sections/SectionPopularKidsMovies.js";
@@ -40,6 +37,7 @@ export default function ExploreMovies(props) {
         }}
         {...rest}
       />
+
       <Parallax image={require("assets/img/bg7.jpg")}>
         <div className={classes.container}>
           <GridContainer>
@@ -61,6 +59,7 @@ export default function ExploreMovies(props) {
         <SectionPopularKidsMovies />
         <SectionPopularDramasOfThisYear />
       </div>
+      
       <Footer />
     </div>
   );

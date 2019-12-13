@@ -40,13 +40,18 @@ export default function SectionPopularKidsMovies() {
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
 
   return (
+    <div>
+    { isError ? null : 
     <div className={classes.section}>
       <div className={classes.container}>
+      
         <div id="images">
           <div className={classes.title}>
             <h2>Popular Kids Movies</h2>
           </div>
           <br />
+          {
+           isLoading ? <div>Loading...</div> : 
           <GridContainer>
             {
               data.results && 
@@ -76,9 +81,11 @@ export default function SectionPopularKidsMovies() {
               })
             }
           </GridContainer>
-          <GridContainer />
+          }
         </div>
       </div>
     </div>
+    }  
+    </div>  
   );
 }

@@ -42,42 +42,47 @@ export default function SectionPopularDramasOfThisYear() {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
+      { isError ? <div>Something went wrong loading sectionPopularDramasOfThisYear...</div> : 
+
         <div id="images">
           <div className={classes.title}>
             <h2>Popular Dramas of 2019</h2>
           </div>
           <br />
-          <GridContainer>
-            {
-              data.results && 
-              data.results
-              .filter((movie, index) => index < 18)
-              .map( ({original_title, poster_path, id}) => {
-                return (
-                
-                  <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
-                    <Link to={`/movies/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-                    <img
-                      src={`${baseImgUrl}${poster_path}`}
-                      alt="..."
-                      className={
-                        classes.imgRaised +
-                        " " +
-                        classes.imgRounded +
-                        " " +
-                        classes.imgFluid
-                      }
-                    />
-                    <h4>{original_title}</h4>
-                    </Link>
-                  </GridItem>
-                
-                )
-              })
-            }
-          </GridContainer>
-          <GridContainer />
+          {
+           isLoading ? <div>Loading...</div> : 
+            <GridContainer>
+              {
+                data.results && 
+                data.results
+                .filter((movie, index) => index < 18)
+                .map( ({original_title, poster_path, id}) => {
+                  return (
+                  
+                    <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
+                      <Link to={`/movies/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                      <img
+                        src={`${baseImgUrl}${poster_path}`}
+                        alt="..."
+                        className={
+                          classes.imgRaised +
+                          " " +
+                          classes.imgRounded +
+                          " " +
+                          classes.imgFluid
+                        }
+                      />
+                      <h4>{original_title}</h4>
+                      </Link>
+                    </GridItem>
+                  
+                  )
+                })
+              }
+            </GridContainer>
+          }
         </div>
+      }
       </div>
     </div>
   );

@@ -11,18 +11,17 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import SectionMoviesGrid from "./Sections/SectionMoviesGrid.js";
-import SectionSeriesGrid from "./Sections/SectionSeriesGrid.js";
+import SectionMoviesGrid from './Sections/SectionMoviesGrid';
+import SectionSeriesGrid from './Sections/SectionSeriesGrid';
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
 const useStyles = makeStyles(styles);
 
-export default function Components(props) {
+export default function HomePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
