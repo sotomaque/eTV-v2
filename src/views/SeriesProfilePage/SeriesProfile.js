@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -113,7 +114,7 @@ export default function SeriesProfile(props) {
                               .filter((genre, index) => index < 1)
                               .map((genre, index) => {
                                 return (
-                                  <h6 key={index}>{genre.name} | {data.seasons.length} Seasons</h6>
+                                  <h6 key={index}><Link to={`/genre/series/${genre.id}`}>{genre.name}</Link> | {data.seasons.length} Seasons</h6>
                                 )
                               })
                             }

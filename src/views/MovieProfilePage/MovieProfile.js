@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 // nodejs library that concatenates classes
@@ -115,7 +116,7 @@ export default function MovieProfile(props) {
                               .filter((genre, index) => index < 1)
                               .map((genre, index) => {
                                 return (
-                                  <h6 key={index}>{genre.name} | {Math.floor(data.runtime/60)} hrs {data.runtime % 60} mins | {moment(data.release_date).format("MMM Do YY")}</h6>
+                                  <h6 key={index}><Link to={`/genre/movies/${genre.id}`}>{genre.name}</Link> | {Math.floor(data.runtime/60)} hrs {data.runtime % 60} mins | {moment(data.release_date).format("MMM Do YY")}</h6>
                                 )
                               })
                             }

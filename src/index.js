@@ -13,18 +13,24 @@ import LandingPage from "views/LandingPage/LandingPage.js";
 import MovieProfile from "views/MovieProfilePage/MovieProfile.js";
 import SeriesProfile from "views/SeriesProfilePage/SeriesProfile.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
+import ExploreGenreSeries from 'views/ExploreGenreSeriesPage/ExploreGenreSeries';
+import ExploreGenreMovies from "views/ExploreGenreMoviesPage/ExploreGenreMovies";
+
 
 var hist = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route path="/landing-page" component={LandingPage} />
       <Route path="/movies/:movie_id" component={MovieProfile} />
       <Route path="/series/:series_id" component={SeriesProfile} />
       <Route path="/explore/movies" component={ExploreMovies} />
       <Route path="/explore/series" component={ExploreSeries} />
+      <Route path="/genre/series/:genre_id" component={ExploreGenreSeries} />
+      <Route path="/genre/movies/:genre_id" component={ExploreGenreMovies} />
+      
       <Route path="/login-page" component={LoginPage} />
+      <Route path="/landing-page" component={LandingPage} />
       <Route exact path="/" component={HomePage} />
     </Switch>
   </Router>,
