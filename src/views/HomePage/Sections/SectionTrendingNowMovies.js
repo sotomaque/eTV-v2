@@ -13,11 +13,11 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/movie
 
 const useStyles = makeStyles(styles);
 
-export default function SectionSeriesGrid() {
+export default function SectionTrendingNowMovies() {
   const classes = useStyles();
   const [data, setData] = useState({ hits: [] });
   const [url, setUrl] = useState(
-    'https://api.themoviedb.org/3/discover/tv?api_key=c9f3c719e4cce4a021ff37d2e89d43ba',
+    'https://api.themoviedb.org/3/trending/movie/day?api_key=c9f3c719e4cce4a021ff37d2e89d43ba',
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -38,44 +38,47 @@ export default function SectionSeriesGrid() {
   }, [url]);
 
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
-  
+
   return (
     <div className={classes.section}>
       <div className={classes.container}>
+      { isError ? null : 
         <div id="images">
           <div className={classes.title}>
-            <h2>Popular Series</h2>
+            <h2>Movies Currently Trending</h2>
           </div>
           <br />
+          { isLoading ? <div>Loading...</div> : 
           <GridContainer>
             {
               data.results && 
               data.results
               .filter((movie, index) => index < 18)
-              .map( ({original_name, poster_path, id}) => {
+              .map( ({original_title, poster_path, id}) => {
                 return (
-                <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
-                  <Link to={`/series/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-                  <img
-                    src={`${baseImgUrl}${poster_path}`}
-                    alt="..."
-                    className={
-                      classes.imgRaised +
-                      " " +
-                      classes.imgRounded +
-                      " " +
-                      classes.imgFluid
-                    }
-                  />
-                  <h4>{original_name}</h4>
-                  </Link>
-                </GridItem>
+                  <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
+                    <Link to={`/movies/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                    <img
+                      src={`${baseImgUrl}${poster_path}`}
+                      alt="..."
+                      className={
+                        classes.imgRaised +
+                        " " +
+                        classes.imgRounded +
+                        " " +
+                        classes.imgFluid
+                      }
+                    />
+                    <h4>{original_title}</h4>
+                    </Link>
+                  </GridItem>
                 )
               })
             }
           </GridContainer>
-          <GridContainer />
+          }
         </div>
+      }
       </div>
     </div>
   );

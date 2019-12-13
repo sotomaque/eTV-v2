@@ -44,7 +44,7 @@ export default function SectionMoviesGrid() {
       <div className={classes.container}>
         <div id="images">
           <div className={classes.title}>
-            <h2>Movies</h2>
+            <h2>Popular Movies</h2>
           </div>
           <br />
           <GridContainer>

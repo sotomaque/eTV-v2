@@ -42,14 +42,13 @@ export default function SectionMoviesInTheaters() {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
-        { isError ? <div>Something went wrong loading sectionMoviesInTheaters...</div> : 
+        { isError ? null : 
         <div id="images">
         <div className={classes.title}>
           <h2>Movies in Theaters</h2>
         </div>
         <br />
-        {
-           isLoading ? <div>Loading...</div> : 
+        { isLoading ? <div>Loading...</div> : 
            <GridContainer>
               {
                 data.results && 
@@ -74,7 +73,6 @@ export default function SectionMoviesInTheaters() {
                       <h4>{original_title}</h4>
                       </Link>
                     </GridItem>
-                  
                   )
                 })
               }

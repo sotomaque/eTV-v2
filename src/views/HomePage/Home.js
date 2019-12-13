@@ -16,6 +16,8 @@ import Parallax from "components/Parallax/Parallax.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import SectionMoviesGrid from './Sections/SectionMoviesGrid';
 import SectionSeriesGrid from './Sections/SectionSeriesGrid';
+import SectionTrendingNowMovies from "./Sections/SectionTrendingNowMovies";
+import SectionTrendingNowSeries from "./Sections/SectionTrendingNowSeries";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
@@ -24,6 +26,14 @@ const useStyles = makeStyles(styles);
 export default function HomePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+  var arr = [<SectionTrendingNowMovies />,
+    <SectionTrendingNowSeries />,
+    <SectionMoviesGrid />,
+    <SectionSeriesGrid />
+  ];
+  function randomize(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
   return (
     <div>
       <Header
@@ -53,8 +63,7 @@ export default function HomePage(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionMoviesGrid />
-        <SectionSeriesGrid />
+        {randomize(arr)}
       </div>
       <Footer />
     </div>
