@@ -23,6 +23,9 @@ import Parallax from "components/Parallax/Parallax.js";
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
+//sections
+import SectionMovieCast from './Sections/MovieCastSection';
+
 const useStyles = makeStyles(styles);
 
 export default function MovieProfile(props) {
@@ -155,6 +158,7 @@ export default function MovieProfile(props) {
                       </GridContainer>
                     </div>
                   }
+                  <SectionMovieCast movieId={movieId}/>
                 </div>
               </div>
             </div>
