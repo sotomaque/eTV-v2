@@ -15,62 +15,68 @@ import styles from "assets/jss/material-kit-react/views/landingPageSections/team
 const useStyles = makeStyles(styles);
 
 export default function SectionMovieCast({movieId}) {
-  const classes = useStyles();
-  const imageClasses = classNames(
+    const classes = useStyles();
+    const imageClasses = classNames(
     classes.imgRaised,
     classes.imgRoundedCircle,
     classes.imgFluid
-  );
-  const [data, setData] = useState({ hits: [] });
-  const [url, setUrl] = useState(
+    );
+    const [data, setData] = useState({ hits: [] });
+    const [url, setUrl] = useState(
     'http://api.themoviedb.org/3/movie/'+ movieId + '/casts?api_key=c9f3c719e4cce4a021ff37d2e89d43ba',
-  );
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+    );
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
+        setIsError(false);
+        setIsLoading(true);
+        try {
         const result = await axios(url);
         setData(result.data);
-      } catch (error) {
+        } catch (error) {
         setIsError(true);
-      }
-      setIsLoading(false);
+        }
+        setIsLoading(false);
     };
     fetchData();
-  }, [url]);
-  console.log(data)
-  const baseImgUrl = "https://image.tmdb.org/t/p/original/";
-  return (
-    <div className={classes.section}>
-      <h2 className={classes.title}>Cast</h2>
-      <div>
-        <GridContainer className={classes.justifyCenter}>
-            {
-                data.cast && data.cast
-                .filter((actor, index) => index < 6)
-                .map(({profile_path, name, character}) => {
-                    return (
-                        <GridItem xs={12} sm={12} md={4} >
-                        <Card plain>
-                        <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                            <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
-                        </GridItem>
-                        <h4 className={classes.cardTitle}>
-                            {name}
-                            <br />
-                            <small className={classes.smallTitle}>{character}</small>
-                        </h4>
-                        </Card>
-                    </GridItem>
-                    )
-                })
+    }, [url]);
+    console.log(data)
+    const baseImgUrl = "https://image.tmdb.org/t/p/original/";
+    return (
+        <div>
+        { isError ? null : 
+        <div className={classes.section}>
+            <h2 className={classes.title}>Cast</h2>
+            <div>
+            { isLoading ? <div>Loading...</div> : 
+                <GridContainer className={classes.justifyCenter}>
+                    {
+                        data.cast && data.cast
+                        .filter((actor, index) => index < 6)
+                        .map(({profile_path, name, character}) => {
+                            return (
+                                <GridItem xs={12} sm={12} md={4} >
+                                <Card plain>
+                                <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
+                                    <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
+                                </GridItem>
+                                <h4 className={classes.cardTitle}>
+                                    {name}
+                                    <br />
+                                    <small className={classes.smallTitle}>{character}</small>
+                                </h4>
+                                </Card>
+                            </GridItem>
+                            )
+                        })
+                    }
+                </GridContainer>
             }
-        </GridContainer>
-      </div>
-    </div>
-  );
+            </div>
+        </div>
+
+        }</div>
+    );
 }
