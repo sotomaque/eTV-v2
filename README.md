@@ -6,37 +6,17 @@
 
 ![Product Presentation Image](https://s3.amazonaws.com/creativetim_bucket/products/83/original/opt_mk_react_thumbnail.jpg)
 
-**[Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme)** is a Free Material-UI Kit with a fresh, new design inspired by Google's material design and is was developed using [create-react-app](https://www.npmjs.com/package/create-react-app). You asked for it, so we built it. It's a great pleasure to introduce to you the material concepts in an easy to use and beautiful set of components. Along with the restyling of the Material-UI elements, you will find three fully-coded example pages, to help you design your next project.
-
-**[Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme)** makes use of light, surface and movement. It uses a deliberate color choice, edge-to-edge imagery and large scale typography. The general layout resembles sheets of paper following multiple different layers, so that the depth and order is obvious. The navigation stays mainly on the left and the actions on the right.
-
-This new design has elements that have been the result of research regarding ink and paper and the way objects and materials interact in real life. The result is a beautiful and consistent set of elements that can get you started with your next project. Material Kit React is a great tool if you are looking to create a web presence for your Android application and need to be consistent, leaving the impression of visually similar elements. It is also a great resource in its own right, looking gorgeous and helping you build your web pages.
-
-**[Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme)** was built with the help of [create-react-app](https://github.com/facebook/create-react-app) and it uses a framework built by our friends from **[Material-UI](https://material-ui.com/)**, who did an amazing job creating the backbone for the material effects, animations, ripples and transitions. Big thanks to this team for the effort and forward thinking they put into it.
-
+**[eTV](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme)** is React IMDB skin. It is designed to use all functional (stateless) components. There is no implementation of redux as a result. All api calls are done as react hooks, querying only the information on that specific component.
 
 ## Table of Contents
 
 * [Quick Start](#quick-start)
-* [Documentation](#documentation)
 * [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
 * [Licensing](#licensing)
 
 
 ## Quick start
-
-- `npm i material-kit-react`
 - [Download from Github](https://github.com/creativetimofficial/material-kit-react/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/material-kit-react).
-- Install with [Bower](https://bower.io/): ```bower install material-kit-react```.
-- Clone the repo: `git clone https://github.com/creativetimofficial/material-kit-react.git`.
-
-
-## Documentation
-The documentation for the Material Kit React is hosted at our [website](https://demos.creative-tim.com/material-kit-react/#/documentation/tutorial).
 
 
 ## File Structure
@@ -161,17 +141,8 @@ material-kit-react
             └── ProfilePage.js
 ```
 
-
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Material Kit. Here are some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Material Kit. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
-
 ## Licensing
 
-- Copyright 2019 Creative Tim (https://www.creative-tim.com/)
+- Copyright 2019 Enrique Sotomayor
 
 - Licensed under MIT (https://github.com/creativetimofficial/material-kit/blob/master/LICENSE.md)
