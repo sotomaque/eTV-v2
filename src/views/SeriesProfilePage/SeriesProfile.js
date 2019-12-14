@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 import RateReview from "@material-ui/icons/RateReview";
 import Add from "@material-ui/icons/Add";
+import Timeline from "@material-ui/icons/Timeline";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -18,6 +19,7 @@ import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
+import InfoArea from "components/InfoArea/InfoArea.js";
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
@@ -115,12 +117,14 @@ export default function SeriesProfile(props) {
                             }
                             {
                               data.genres && data.genres
-                              .filter((genre, index) => index < 1)
-                              .map((genre, index) => {
-                                return (
-                                  <h6 key={index}><Link to={`/genre/series/${genre.id}`}>{genre.name}</Link> | {data.seasons.length} Seasons</h6>
-                                )
-                              })
+                              .filter( (genre, index) => index < 1)
+                              .map( (genre, index) => 
+                                {
+                                  return ([
+                                      <h6 key={index}><Link to={`/genre/series/${genre.id}`}>{genre.name}</Link> | {data.seasons.length} Seasons</h6>
+                                  ])
+                                }
+                              )
                             }
                             <Button justIcon link className={classes.margin5} href={data.homepage} target="_blank">
                               <i className={"fa fa-link"} />
@@ -141,16 +145,22 @@ export default function SeriesProfile(props) {
                           color="primary"
                           tabs={[
                             {
-                              tabButton: "Like",
-                              tabIcon: ThumbUp
+                              tabButton: "Cast",
+                              tabIcon: ThumbUp,
+                              tabContent: (
+                                <SectionSeriesCast seriesId={seriesId} />
+                              )
                             
                             },
                             {
-                              tabButton: "Rate",
-                              tabIcon: RateReview
+                              tabButton: "Seasons",
+                              tabIcon: RateReview,
+                              tabContent: (
+                                <SectionSeriesSeasons seriesId={seriesId} />
+                              )
                             },
                             {
-                              tabButton: "Add to List",
+                              tabButton: "More Info",
                               tabIcon: Add
                             }
                           ]}
@@ -159,8 +169,7 @@ export default function SeriesProfile(props) {
                     </GridContainer>
                   </div>
                 }
-                <SectionSeriesCast seriesId={seriesId} />
-                <SectionSeriesSeasons seriesId={seriesId} />
+                
               </div>
             </div>
           </div>

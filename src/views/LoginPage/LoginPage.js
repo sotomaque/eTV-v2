@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -19,6 +19,8 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
+import { signInWithGoogle } from "firebase/firebase.utils.js";
+
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
@@ -27,11 +29,31 @@ const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const [email, setEmail] = useState({ hits: [] });
+  const [password, setPassword] = useState({ hits: [] });
+
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
   const { ...rest } = props;
+  function handleChange(event) {
+    switch (event.target.id) {
+      case "email":
+        setEmail(event.target.value)
+      case "password":
+        setPassword(event.target.value)
+      default:
+        break;
+    }
+    
+  }
+  function handleClick(event) {
+    event.preventDefault();
+    console.log('email: ', email);
+    console.log('password: ', password);
+  }
+
   return (
     <div>
       <Header
@@ -80,7 +102,7 @@ export default function LoginPage(props) {
                         href="#pablo"
                         target="_blank"
                         color="transparent"
-                        onClick={e => e.preventDefault()}
+                        onClick={signInWithGoogle}
                       >
                         <i className={"fab fa-google-plus-g"} />
                       </Button>
@@ -88,21 +110,7 @@ export default function LoginPage(props) {
                   </CardHeader>
                   <p className={classes.divider}>Or Be Classical</p>
                   <CardBody>
-                    <CustomInput
-                      labelText="First Name..."
-                      id="first"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "text",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <People className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
+                    
                     <CustomInput
                       labelText="Email..."
                       id="email"
@@ -110,6 +118,8 @@ export default function LoginPage(props) {
                         fullWidth: true
                       }}
                       inputProps={{
+                        onChange: (event) => {handleChange(event)},
+                        id: "email",
                         type: "email",
                         endAdornment: (
                           <InputAdornment position="end">
@@ -120,11 +130,13 @@ export default function LoginPage(props) {
                     />
                     <CustomInput
                       labelText="Password"
-                      id="pass"
+                      id="password"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
+                        onChange: (event) => {handleChange(event)},
+                        id: "password",
                         type: "password",
                         endAdornment: (
                           <InputAdornment position="end">
@@ -138,7 +150,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button simple color="primary" size="lg" onClick={handleClick}>
                       Get started
                     </Button>
                   </CardFooter>

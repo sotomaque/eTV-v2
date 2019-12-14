@@ -20,7 +20,7 @@ const profilePageStyle = {
     textAlign: "center !important"
   },
   rating: {
-    marginTop: "-100px"
+    marginTop: "-110px"
   },
   name: {
     marginTop: "-80px"
@@ -41,7 +41,7 @@ const profilePageStyle = {
     ...title,
     display: "inline-block",
     position: "relative",
-    marginTop: "30px",
+    marginTop: "-10px",
     minHeight: "32px",
     textDecoration: "none"
   },

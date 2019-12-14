@@ -140,16 +140,19 @@ export default function MovieProfile(props) {
                             color="primary"
                             tabs={[
                               {
-                                tabButton: "Like",
-                                tabIcon: ThumbUp
+                                tabButton: "Cast",
+                                tabIcon: ThumbUp,
+                                tabContent: (
+                                  <SectionMovieCast movieId={movieId} />
+                                )
                               
                               },
                               {
-                                tabButton: "Rate",
+                                tabButton: "Genres",
                                 tabIcon: RateReview
                               },
                               {
-                                tabButton: "Add to List",
+                                tabButton: "More Info",
                                 tabIcon: Add
                               }
                             ]}
@@ -158,7 +161,7 @@ export default function MovieProfile(props) {
                       </GridContainer>
                     </div>
                   }
-                  <SectionMovieCast movieId={movieId} />
+                  
                 </div>
               </div>
             </div>
