@@ -8,7 +8,8 @@ import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
 // core components
 import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import LeftLinks from "components/Header/LeftLinks.js";
+import RightLinks from "components/Header/RightLinks";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -57,10 +58,15 @@ export default function LoginPage(props) {
   return (
     <div>
       <Header
-        absolute
-        color="transparent"
         brand="eTV"
-        rightLinks={<HeaderLinks />}
+        color="transparent"
+        leftLinks={<LeftLinks />}
+        rightLinks={<RightLinks />}
+        fixed
+        changeColorOnScroll={{
+          height: 200,
+          color: "white"
+        }}
         {...rest}
       />
       <div

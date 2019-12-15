@@ -9,17 +9,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 import RateReview from "@material-ui/icons/RateReview";
 import Add from "@material-ui/icons/Add";
-import Timeline from "@material-ui/icons/Timeline";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import LeftLinks from "components/Header/LeftLinks.js";
+import RightLinks from "components/Header/RightLinks";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
+
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
@@ -35,11 +35,7 @@ export default function SeriesProfile(props) {
   const seriesId = props.match.params.series_id;
   
   const { ...rest } = props;
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-  );
+
   const [data, setData] = useState({ hits: [] });
   const [url, setUrl] = useState(
     'https://api.themoviedb.org/3/tv/' + seriesId + '?api_key=c9f3c719e4cce4a021ff37d2e89d43ba',
@@ -64,15 +60,15 @@ export default function SeriesProfile(props) {
 
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
   const backdropUrl = baseImgUrl + data.backdrop_path;
-  console.log(data)
 
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     <div>
       <Header
-        color="transparent"
         brand="eTV"
-        rightLinks={<HeaderLinks />}
+        color="transparent"
+        leftLinks={<LeftLinks />}
+        rightLinks={<RightLinks />}
         fixed
         changeColorOnScroll={{
           height: 200,

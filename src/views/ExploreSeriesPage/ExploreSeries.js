@@ -6,7 +6,8 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import LeftLinks from "components/Header/LeftLinks.js";
+import RightLinks from "components/Header/RightLinks";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -34,16 +35,16 @@ export default function ExploreSeries(props) {
     <div>
       <Header
         brand="eTV"
-        rightLinks={<HeaderLinks />}
-        fixed
         color="transparent"
+        leftLinks={<LeftLinks />}
+        rightLinks={<RightLinks />}
+        fixed
         changeColorOnScroll={{
-          height: 400,
+          height: 200,
           color: "white"
         }}
         {...rest}
       />
-
       <Parallax image={require("assets/img/bg3.jpg")}>
         <div className={classes.container}>
           <GridContainer>

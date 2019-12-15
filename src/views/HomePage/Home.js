@@ -13,7 +13,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import LeftLinks from "components/Header/LeftLinks.js";
+import RightLinks from "components/Header/RightLinks";
 import SectionMoviesGrid from './Sections/SectionMoviesGrid';
 import SectionSeriesGrid from './Sections/SectionSeriesGrid';
 import SectionTrendingNowMovies from "./Sections/SectionTrendingNowMovies";
@@ -24,6 +25,7 @@ import styles from "assets/jss/material-kit-react/views/components.js";
 const useStyles = makeStyles(styles);
 
 export default function HomePage(props) {
+
   const classes = useStyles();
   const { ...rest } = props;
   var arr = [<SectionTrendingNowMovies />,
@@ -38,11 +40,12 @@ export default function HomePage(props) {
     <div>
       <Header
         brand="eTV"
-        rightLinks={<HeaderLinks />}
-        fixed
         color="transparent"
+        rightLinks={<RightLinks />}
+        leftLinks={<LeftLinks />}
+        fixed
         changeColorOnScroll={{
-          height: 400,
+          height: 200,
           color: "white"
         }}
         {...rest}

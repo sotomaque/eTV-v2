@@ -17,7 +17,8 @@ import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import LeftLinks from "components/Header/LeftLinks.js";
+import RightLinks from "components/Header/RightLinks";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
@@ -28,8 +29,8 @@ import SectionMovieCast from './Sections/MovieCastSection';
 
 const useStyles = makeStyles(styles);
 
-export default function MovieProfile(props) {
-
+export default function MovieProfile(props, currentUserProps) {
+  console.log('!!!!',currentUserProps); 
   const classes = useStyles();
   const movieId = props.match.params.movie_id;
   
@@ -69,9 +70,10 @@ export default function MovieProfile(props) {
   return (
     <div>
       <Header
-        color="transparent"
         brand="eTV"
-        rightLinks={<HeaderLinks />}
+        color="transparent"
+        leftLinks={<LeftLinks />}
+        rightLinks={<RightLinks />}
         fixed
         changeColorOnScroll={{
           height: 200,

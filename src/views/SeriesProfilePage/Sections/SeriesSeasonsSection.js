@@ -48,6 +48,7 @@ export default function SectionSeriesSeasons({seriesId}) {
                 <GridContainer className={classes.justifyCenter}>
                     {
                         data.seasons && data.seasons
+                        .filter(({poster_path}) => poster_path !== null )
                         .map(({season_number, poster_path, name, id}) => {
                             return (
                                 <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>

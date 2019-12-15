@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -54,21 +55,25 @@ export default function SectionSeriesCast({seriesId}) {
                 <GridContainer className={classes.justifyCenter}>
                     {
                         data.cast && data.cast
+                        .filter(({profile_path}) => profile_path !== null )
                         .filter((actor, index) => index < 6)
-                        .map(({profile_path, name, character}) => {
+                        .map(({profile_path, name, character, id}) => {
                             return (
                                 <GridItem xs={12} sm={12} md={4} >
-                                <Card plain>
-                                <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                                    <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
+                                    <Link to={`/cast/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}> 
+                                        <Card plain>
+                                        <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
+                                            <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
+                                        </GridItem>
+                                        <h4 className={classes.cardTitle}>
+                                            {name}
+                                            <br />
+                                            <small className={classes.smallTitle}>{character}</small>
+                                        </h4>
+                                        </Card>
+                                    </Link>
                                 </GridItem>
-                                <h4 className={classes.cardTitle}>
-                                    {name}
-                                    <br />
-                                    <small className={classes.smallTitle}>{character}</small>
-                                </h4>
-                                </Card>
-                            </GridItem>
+                                
                             )
                         })
                     }
