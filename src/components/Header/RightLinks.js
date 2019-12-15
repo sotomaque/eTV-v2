@@ -16,16 +16,24 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 
 const useStyles = makeStyles(styles);
 
-export default function LeftLinks(props) {
+export default function RightLinks({currentUser}) {
 
   const classes = useStyles();
   return (
     <List className={classes.list}>
+      {
+        currentUser ? <ListItem className={classes.listItem}>
+        <Link onClick={() => auth.signOut() } className={classes.navLink}>
+            Sign Out
+        </Link>
+    </ListItem> : 
         <ListItem className={classes.listItem}>
-            <Link onClick={() => auth.signOut() } className={classes.navLink}>
-                Sign Out
-            </Link>
+          <Link to="/login-page" className={classes.navLink}>
+            Login
+          </Link>
         </ListItem>
+      }
+        
     </List>
   );
 }

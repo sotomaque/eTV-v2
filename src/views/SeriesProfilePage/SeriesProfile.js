@@ -6,18 +6,12 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import ThumbUp from "@material-ui/icons/ThumbUp";
-import RateReview from "@material-ui/icons/RateReview";
-import Add from "@material-ui/icons/Add";
+
 // core components
-import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import LeftLinks from "components/Header/LeftLinks.js";
-import RightLinks from "components/Header/RightLinks";
-import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
 
@@ -64,18 +58,6 @@ export default function SeriesProfile(props) {
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     <div>
-      <Header
-        brand="eTV"
-        color="transparent"
-        leftLinks={<LeftLinks />}
-        rightLinks={<RightLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 200,
-          color: "white"
-        }}
-        {...rest}
-      />
       { isError ? 
         <div>
           <Parallax small filter image={require("assets/img/landing-bg.jpg")} />

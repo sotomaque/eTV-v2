@@ -14,12 +14,10 @@ import People from "@material-ui/icons/People";
 import Add from "@material-ui/icons/Add";
 
 // core components
-import Header from "components/Header/Header.js";
+
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import LeftLinks from "components/Header/LeftLinks.js";
-import RightLinks from "components/Header/RightLinks";
 import NavPills from "components/NavPills/NavPills.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -85,7 +83,7 @@ export default function CastProfile(props) {
 
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
 
-   console.log('D', data)
+  //  console.log('D', data)
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     
@@ -99,18 +97,7 @@ export default function CastProfile(props) {
           </div>
         </div> :
         <div>
-      <Header
-        brand="eTV"
-        color="transparent"
-        leftLinks={<LeftLinks />}
-        rightLinks={<RightLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 200,
-          color: "white"
-        }}
-        {...rest}
-      />
+     
       <Parallax
         image={require("assets/img/examples/city.jpg")}
         filter="dark"

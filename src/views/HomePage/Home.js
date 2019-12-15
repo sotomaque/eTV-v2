@@ -7,18 +7,16 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
-import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-import LeftLinks from "components/Header/LeftLinks.js";
-import RightLinks from "components/Header/RightLinks";
 import SectionMoviesGrid from './Sections/SectionMoviesGrid';
 import SectionSeriesGrid from './Sections/SectionSeriesGrid';
 import SectionTrendingNowMovies from "./Sections/SectionTrendingNowMovies";
 import SectionTrendingNowSeries from "./Sections/SectionTrendingNowSeries";
+import SectionSearchMovies from './Sections/SectionSearchMovies';
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
@@ -32,24 +30,13 @@ export default function HomePage(props) {
     <SectionTrendingNowSeries />,
     <SectionMoviesGrid />,
     <SectionSeriesGrid />
+    
   ];
   function randomize(array) {
     return array.sort(() => Math.random() - 0.5);
   }
   return (
     <div>
-      <Header
-        brand="eTV"
-        color="transparent"
-        rightLinks={<RightLinks />}
-        leftLinks={<LeftLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 200,
-          color: "white"
-        }}
-        {...rest}
-      />
       <Parallax image={require("assets/img/bg4.jpg")}>
         <div className={classes.container}>
           <GridContainer>
@@ -66,6 +53,7 @@ export default function HomePage(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
+        <SectionSearchMovies />
         {randomize(arr)}
       </div>
       <Footer />

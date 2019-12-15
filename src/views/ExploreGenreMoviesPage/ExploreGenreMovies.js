@@ -4,9 +4,6 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Header from "components/Header/Header.js";
-import LeftLinks from "components/Header/LeftLinks.js";
-import RightLinks from "components/Header/RightLinks";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -15,29 +12,29 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/material-kit-react/views/components.js";
 // sections for this page
 import SectionMoviesByGenreGrid from "./Sections/SectionMoviesByGenreGrid";
+import {tv_genres} from "assets/data/genre_list.js";
+import {movie_genres} from "assets/data/genre_list.js";
+
 
 
 const useStyles = makeStyles(styles);
 
 export default function ExploreGenreMovies(props) {
   const genreId = props.match.params.genre_id;
+  const genreName = movie_genres.genres.map((genre) =>( 
+    genre.id == genreId ? genre.name : null)
+  )
+  // TODO: search through tv_genres list, find id for this movie_genre, in that list,
+  // pass that id into a component, "sectionShowsByGenreGrid",
+  // also pass movie genreId to "sectionMoviesByGenreGrid",
+  // have single genre view, that can load both tv shows, and movies of a specified genre
+
+  // TODO: add custom paralax images to genre view, depending on genre
   const classes = useStyles();
   const { ...rest } = props;
 
   return (
     <div>
-      <Header
-        brand="eTV"
-        color="transparent"
-        leftLinks={<LeftLinks />}
-        rightLinks={<RightLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 200,
-          color: "white"
-        }}
-        {...rest}
-      />
       <Parallax image={require("assets/img/bg2.jpg")}>
         <div className={classes.container}>
           <GridContainer>
@@ -54,7 +51,7 @@ export default function ExploreGenreMovies(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionMoviesByGenreGrid genreId={genreId}/>
+        <SectionMoviesByGenreGrid genreId={genreId} genreName={genreName}/>
       </div>
       
       <Footer />

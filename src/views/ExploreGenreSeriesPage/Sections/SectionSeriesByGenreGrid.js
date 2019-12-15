@@ -13,11 +13,11 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/movie
 
 const useStyles = makeStyles(styles);
 
-export default function SectionSeriesByGenreGrid({ genreId }) {
+export default function SectionSeriesByGenreGrid({ genreId, genreName }) {
   const classes = useStyles();
 
-  const [data, setData] = useState({ hits: [] });
-  const [url, setUrl] = useState(
+  const [ data, setData ] = useState({ hits: [] });
+  const [ url, setUrl ] = useState(
     'https://api.themoviedb.org/3/discover/tv?api_key=c9f3c719e4cce4a021ff37d2e89d43ba&language=en-US&sort_by=popularity.desc&with_genres='+genreId,
   );
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +38,7 @@ export default function SectionSeriesByGenreGrid({ genreId }) {
     fetchData();
   }, [url]);
   // console.log(data)
+
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
   
   return (
@@ -45,7 +46,7 @@ export default function SectionSeriesByGenreGrid({ genreId }) {
       <div className={classes.container}>
         <div id="images">
           <div className={classes.title}>
-            <h2>placeholder genre name</h2>
+            <h2>{genreName}</h2>
           </div>
           <br />
           <GridContainer>

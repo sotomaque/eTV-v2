@@ -13,7 +13,7 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/movie
 
 const useStyles = makeStyles(styles);
 
-export default function SectionMoviesByGenreGrid({ genreId }) {
+export default function SectionMoviesByGenreGrid({ genreId, genreName }) {
   const classes = useStyles();
   const [data, setData] = useState({ hits: [] });
   const [url, setUrl] = useState(
@@ -44,7 +44,7 @@ export default function SectionMoviesByGenreGrid({ genreId }) {
       <div className={classes.container}>
         <div id="images">
           <div className={classes.title}>
-            <h2>placeholder genre title text</h2>
+            <h2>{genreName}</h2>
           </div>
           <br />
           <GridContainer>
