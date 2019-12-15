@@ -37,7 +37,7 @@ export default function SectionSeriesByGenreGrid({ genreId }) {
     };
     fetchData();
   }, [url]);
-  console.log(data)
+  // console.log(data)
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
   
   return (

@@ -51,8 +51,8 @@ export default function LoginPage(props) {
   }
   function handleClick(event) {
     event.preventDefault();
-    console.log('email: ', email);
-    console.log('password: ', password);
+    // console.log('email: ', email);
+    // console.log('password: ', password);
   }
 
   return (

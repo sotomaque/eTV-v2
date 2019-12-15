@@ -19,7 +19,6 @@ var hist = createBrowserHistory();
 class App extends React.Component {
     constructor() {
         super();
-        console.log('its working')
 
         this.state = {
             currentUser: null
@@ -31,7 +30,7 @@ class App extends React.Component {
     componentDidMount() {
         this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
             this.setState({ currentUser: user })
-            console.log(user)
+            // console.log(user)
   
         });
 

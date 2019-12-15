@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -12,19 +11,13 @@ import Card from "components/Card/Card.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.js";
 
-
 const useStyles = makeStyles(styles);
 
-export default function SectionMovieCast({movieId}) {
+export default function SectionLatestWork({seriesId}) {
     const classes = useStyles();
-    const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-    );
     const [data, setData] = useState({ hits: [] });
     const [url, setUrl] = useState(
-    'http://api.themoviedb.org/3/movie/'+ movieId + '/casts?api_key=c9f3c719e4cce4a021ff37d2e89d43ba',
+    'https://api.themoviedb.org/3/tv/' + seriesId + '?api_key=c9f3c719e4cce4a021ff37d2e89d43ba',
     );
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -49,31 +42,30 @@ export default function SectionMovieCast({movieId}) {
         <div>
         { isError ? null : 
         <div className={classes.section}>
-            <h2 className={classes.title}>Cast</h2>
+            <h2 className={classes.title}>Seasons</h2>
             <div>
             { isLoading ? <div>Loading...</div> : 
                 <GridContainer className={classes.justifyCenter}>
                     {
-                        data.cast && data.cast
-                        .filter(({profile_path}) => profile_path !== null )
-                        .filter((actor, index) => index < 6)
-                        .map(({profile_path, name, character, id}) => {
+                        data.seasons && data.seasons
+                        .filter(({poster_path}) => poster_path !== null )
+                        .map(({season_number, poster_path, name, id}) => {
                             return (
-                                <GridItem xs={12} sm={12} md={4} >
-                                    <Link to={`/cast/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-                                        <Card plain>
-                                        <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                                            <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
-                                        </GridItem>
-                                        <h4 className={classes.cardTitle}>
-                                            {name}
-                                            <br />
-                                            <small className={classes.smallTitle}>{character}</small>
-                                        </h4>
-                                        </Card>
-                                    </Link>
+                                <GridItem xs={12} sm={2} className={classes.marginLeft} key={id}>
+                                    <Card plain>
+                                        <img 
+                                            src={`${baseImgUrl}${poster_path}`} 
+                                            alt={`Season ${season_number}`} 
+                                            className={
+                                                classes.imgRaised +
+                                                " " +
+                                                classes.imgRounded +
+                                                " " +
+                                                classes.imgFluid} 
+                                            />
+                                        <h4 className={classes.cardTitle}>{name}</h4>
+                                    </Card>
                                 </GridItem>
-                                
                             )
                         })
                     }

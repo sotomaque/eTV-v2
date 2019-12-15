@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-// nodejs library that concatenates classes
-import classNames from "classnames";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -21,6 +20,7 @@ export default function SectionSeriesSeasons({seriesId}) {
     );
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    
 
     useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +36,7 @@ export default function SectionSeriesSeasons({seriesId}) {
     };
     fetchData();
     }, [url]);
-    console.log(data)
+    // console.log(data)
     const baseImgUrl = "https://image.tmdb.org/t/p/original/";
     return (
         <div>

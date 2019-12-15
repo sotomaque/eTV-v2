@@ -30,7 +30,7 @@ import SectionMovieCast from './Sections/MovieCastSection';
 const useStyles = makeStyles(styles);
 
 export default function MovieProfile(props, currentUserProps) {
-  console.log('!!!!',currentUserProps); 
+  // console.log('!!!!',currentUserProps); 
   const classes = useStyles();
   const movieId = props.match.params.movie_id;
   
@@ -64,7 +64,7 @@ export default function MovieProfile(props, currentUserProps) {
 
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
   const backdropUrl = baseImgUrl + data.backdrop_path;
-  console.log(data)
+  // console.log(data)
 
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
@@ -135,35 +135,10 @@ export default function MovieProfile(props, currentUserProps) {
                       <div className={classes.description}>
                         <p>{data.overview}</p>
                       </div>
-                      <GridContainer justify="center">
-                        <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
-                          <NavPills
-                            alignCenter
-                            color="primary"
-                            tabs={[
-                              {
-                                tabButton: "Cast",
-                                tabIcon: ThumbUp,
-                                tabContent: (
-                                  <SectionMovieCast movieId={movieId} />
-                                )
-                              
-                              },
-                              {
-                                tabButton: "Genres",
-                                tabIcon: RateReview
-                              },
-                              {
-                                tabButton: "More Info",
-                                tabIcon: Add
-                              }
-                            ]}
-                          />
-                        </GridItem>
-                      </GridContainer>
+                      
                     </div>
                   }
-                  
+                  <SectionMovieCast movieId={movieId} />
                 </div>
               </div>
             </div>

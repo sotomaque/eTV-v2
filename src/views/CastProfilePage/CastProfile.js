@@ -6,14 +6,13 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+
 // @material-ui/icons
 import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
 import People from "@material-ui/icons/People";
 import Add from "@material-ui/icons/Add";
-import Favorite from "@material-ui/icons/Favorite";
+
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -36,13 +35,14 @@ import clemOnojeghuo from "assets/img/examples/clem-onojeghuo.jpg";
 import cynthiaDelRio from "assets/img/examples/cynthia-del-rio.jpg";
 import mariyaGeorgieva from "assets/img/examples/mariya-georgieva.jpg";
 import clemOnojegaw from "assets/img/examples/clem-onojegaw.jpg";
-import darrenColeshill from "assets/img/examples/darren-coleshill.jpg";
+
 import avatar from "assets/img/faces/avatar.jpg";
 import marc from "assets/img/faces/marc.jpg";
 import kendall from "assets/img/faces/kendall.jpg";
 import cardProfile2Square from "assets/img/faces/card-profile2-square.jpg";
 
 import profilePageStyle from "assets/jss/material-kit-pro-react/views/profilePageStyle.js";
+
 
 const useStyles = makeStyles(profilePageStyle);
 
@@ -53,7 +53,6 @@ export default function CastProfile(props) {
   });
   const classes = useStyles();
   const castId = props.match.params.cast_id;
-  console.log('cast id: ', castId);
 
   const { ...rest } = props;
 
@@ -86,10 +85,20 @@ export default function CastProfile(props) {
 
   const baseImgUrl = "https://image.tmdb.org/t/p/original/";
 
-  console.log('D', data)
+   console.log('D', data)
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
+    
     <div>
+      { isError ? <div>
+          <Parallax small filter image={require("assets/img/landing-bg.jpg")} />
+          <div className={classNames(classes.main, classes.mainRaised)}>
+            <div className={classes.container}>
+              <div className={classes.description}><p>Error...</p></div>
+            </div>
+          </div>
+        </div> :
+        <div>
       <Header
         brand="eTV"
         color="transparent"
@@ -107,6 +116,7 @@ export default function CastProfile(props) {
         filter="dark"
         className={classes.parallax}
       />
+      { isLoading ? <div className={classes.description}><p>Loading...</p></div> :
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <GridContainer justify="center">
@@ -118,14 +128,7 @@ export default function CastProfile(props) {
                 <div className={classes.name}>
                   <h3 className={classes.title}>{data.name}</h3>
                   <h6>Known For: {data.known_for_department}</h6>
-                  <Button
-                    justIcon
-                    simple
-                    color="dribbble"
-                    className={classes.margin5}
-                  >
-                    <i className={classes.socials + " fab fa-dribbble"} />
-                  </Button>
+                  
                   <Button
                     justIcon
                     simple
@@ -134,14 +137,7 @@ export default function CastProfile(props) {
                   >
                     <i className={classes.socials + " fab fa-twitter"} />
                   </Button>
-                  <Button
-                    justIcon
-                    simple
-                    color="pinterest"
-                    className={classes.margin5}
-                  >
-                    <i className={classes.socials + " fab fa-pinterest"} />
-                  </Button>
+                 
                 </div>
               </div>
               <div className={classes.follow}>
@@ -189,30 +185,25 @@ export default function CastProfile(props) {
                         {
                           data.movie_credits && 
                             data.movie_credits.cast
-                            .filter((work, index) => index < 4)
-                            .map(({poster_path, original_title, character}) => {
+                            .filter((work, index) => index < 6)
+                            .map(({poster_path, original_title, id}) => {
                               return (
-                                <GridItem xs={12} sm={12} md={6}>
-                                  <Card
-                                    background
-                                    style={{
-                                      backgroundImage: "url(" + baseImgUrl + poster_path + ")"
-                                    }}
-                                  >
-                                    <CardBody background className={classes.cardBody}>
-                                      <Badge
-                                        color="warning"
-                                        className={classes.badge}
-                                      >
-                                        {character}
-                                      </Badge>
-                                      <a href="#pablo">
-                                        <h2 className={classes.cardTitleWhite}>
-                                          {original_title}
-                                        </h2>
-                                      </a>
-                                    </CardBody>
+                                <GridItem xs={12} sm={6} md={4}>
+                                  <Link to={`/movies/${id}`}>
+                                  <Card plain>
+                                    <img 
+                                      src={`${baseImgUrl}${poster_path}`} 
+                                      className={
+                                          classes.imgRaised +
+                                          " " +
+                                          classes.imgRounded +
+                                          " " +
+                                          classes.imgFluid} 
+                                      />
+                                   
+                                   <h4 className={classes.cardTitle}>{original_title}</h4>
                                   </Card>
+                                  </Link>
                                 </GridItem>
                               )
                           })
@@ -225,29 +216,7 @@ export default function CastProfile(props) {
                         md={2}
                         className={classes.gridItem}
                       >
-                        <h4 className={classes.title}>Stats</h4>
-                        <ul className={classes.listUnstyled}>
-                          <li>
-                            <b>60</b> Products
-                          </li>
-                          <li>
-                            <b>4</b> Collections
-                          </li>
-                          <li>
-                            <b>331</b> Influencers
-                          </li>
-                          <li>
-                            <b>1.2K</b> Likes
-                          </li>
-                        </ul>
-                        <hr />
-                        <h4 className={classes.title}>About this work</h4>
-                        <p className={classes.description}>
-                          French luxury footwear and fashion. The footwear has
-                          incorporated shiny, red-lacquered soles that have
-                          become his signature.
-                        </p>
-                        <hr />
+                     
                         <h4 className={classes.title}>Focus</h4>
                         <Badge color="primary">Footwear</Badge>
                         <Badge color="rose">Luxury</Badge>
@@ -468,59 +437,11 @@ export default function CastProfile(props) {
           <Clearfix />
         </div>
       </div>
-      <Footer
-        content={
-          <div>
-            <div className={classes.left}>
-              <List className={classes.list}>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/?ref=mkpr-profile"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    Creative Tim
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/presentation?ref=mkpr-profile"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    About us
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a href="//blog.creative-tim.com/" className={classes.block}>
-                    Blog
-                  </a>
-                </ListItem>
-                <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/license?ref=mkpr-profile"
-                    target="_blank"
-                    className={classes.block}
-                  >
-                    Licenses
-                  </a>
-                </ListItem>
-              </List>
-            </div>
-            <div className={classes.right}>
-              &copy; {1900 + new Date().getYear()} , made with{" "}
-              <Favorite className={classes.icon} /> by{" "}
-              <a
-                href="https://www.creative-tim.com?ref=mkpr-profile"
-                target="_blank"
-              >
-                Creative Tim
-              </a>{" "}
-              for a better web.
-            </div>
-          </div>
-        }
-      />
+      }
+      <Footer/>
+      </div>
+    }
     </div>
+            
   );
 }

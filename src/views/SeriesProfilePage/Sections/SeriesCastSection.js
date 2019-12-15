@@ -43,7 +43,7 @@ export default function SectionSeriesCast({seriesId}) {
     };
     fetchData();
     }, [url]);
-    console.log(data)
+    // console.log(data)
     const baseImgUrl = "https://image.tmdb.org/t/p/original/";
     return (
         <div>
@@ -62,14 +62,14 @@ export default function SectionSeriesCast({seriesId}) {
                                 <GridItem xs={12} sm={12} md={4} >
                                     <Link to={`/cast/${id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}> 
                                         <Card plain>
-                                        <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                                            <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
-                                        </GridItem>
-                                        <h4 className={classes.cardTitle}>
-                                            {name}
-                                            <br />
-                                            <small className={classes.smallTitle}>{character}</small>
-                                        </h4>
+                                            <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
+                                                <img src={`${baseImgUrl}${profile_path}`} alt="..." className={imageClasses} />
+                                            </GridItem>
+                                            <h4 className={classes.cardTitle}>
+                                                {name}
+                                                <br />
+                                                <small className={classes.smallTitle}>{character}</small>
+                                            </h4>
                                         </Card>
                                     </Link>
                                 </GridItem>

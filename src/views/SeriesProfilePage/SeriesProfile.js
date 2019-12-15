@@ -134,38 +134,10 @@ export default function SeriesProfile(props) {
                       {data.overview}
                       </p>
                     </div>
-                    <GridContainer justify="center">
-                      <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
-                        <NavPills
-                          alignCenter
-                          color="primary"
-                          tabs={[
-                            {
-                              tabButton: "Cast",
-                              tabIcon: ThumbUp,
-                              tabContent: (
-                                <SectionSeriesCast seriesId={seriesId} />
-                              )
-                            
-                            },
-                            {
-                              tabButton: "Seasons",
-                              tabIcon: RateReview,
-                              tabContent: (
-                                <SectionSeriesSeasons seriesId={seriesId} />
-                              )
-                            },
-                            {
-                              tabButton: "More Info",
-                              tabIcon: Add
-                            }
-                          ]}
-                        />
-                      </GridItem>
-                    </GridContainer>
                   </div>
                 }
-                
+                <SectionSeriesCast seriesId={seriesId} />
+                <SectionSeriesSeasons seriesId={seriesId} />
               </div>
             </div>
           </div>
