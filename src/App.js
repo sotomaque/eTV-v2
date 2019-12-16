@@ -15,7 +15,7 @@ import Header from "components/Header/Header.js";
 import LeftLinks from "components/Header/LeftLinks.js";
 import RightLinks from "components/Header/RightLinks";
 
-import { auth } from 'firebase/firebase.utils';
+import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 import { createBrowserHistory } from "history";
 var hist = createBrowserHistory();
 
@@ -25,9 +25,23 @@ export default function App() {
     var unsubscribeFromAuth = null;
 
     useEffect(() => {
-        unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-            setUser(user);
-            console.log(user)
+        unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth);
+                userRef.onSnapshot(snapShot => {
+                    setUser({
+                        user: {
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    })
+                  
+                })
+                
+            } else {
+                setUser(userAuth);
+            }
+            
         });
 
         return function cleanup() {
@@ -36,7 +50,7 @@ export default function App() {
 
     })
 
-    console.log(user)
+    
     
     return (
         <Router history={hist}>
@@ -58,7 +72,7 @@ export default function App() {
                 <Route path="/series/:series_id" component={SeriesProfile} />
                 <Route path="/explore/movies" component={ExploreMovies} />
                 <Route path="/explore/series" component={ExploreSeries} />
-                <Route path="/genre/series/:genre_id" component={ExploreGenreSeries} />
+                <Route path="/genre/series/:genre_id/:genre_name" component={ExploreGenreSeries} />
                 <Route path="/genre/movies/:genre_id" component={ExploreGenreMovies} />
                 <Route path="/login-page" component={LoginPage} />
                 <Route path="/landing-page" component={LandingPage} />

@@ -43,6 +43,9 @@ export default function SectionSeriesByGenreGrid({ genreId, genreName }) {
   
   return (
     <div className={classes.section}>
+      { isError ? <div className={classes.container}>Error</div> :
+        <div>
+          { isLoading ? <div className={classes.container}>Loading</div> :  
       <div className={classes.container}>
         <div id="images">
           <div className={classes.title}>
@@ -79,6 +82,9 @@ export default function SectionSeriesByGenreGrid({ genreId, genreName }) {
           <GridContainer />
         </div>
       </div>
+    }</div>
+      }
+    
     </div>
   );
 }

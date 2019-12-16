@@ -99,7 +99,7 @@ export default function SeriesProfile(props) {
                               .map( (genre, index) => 
                                 {
                                   return ([
-                                      <h6 key={index}><Link to={`/genre/series/${genre.id}`}>{genre.name}</Link> | {data.seasons.length} Seasons</h6>
+                                      <h6 key={index}><Link to={`/genre/series/${genre.id}/${genre.name}`}>{genre.name}</Link> | {data.seasons.length} Seasons</h6>
                                   ])
                                 }
                               )
