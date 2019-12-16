@@ -16,7 +16,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
-import { signInWithGoogle } from "firebase/firebase.utils.js";
+import { auth, signInWithGoogle } from "firebase/firebase.utils.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -33,7 +33,8 @@ export default function LoginPage(props) {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
-  const { ...rest } = props;
+
+
   function handleChange(event) {
     switch (event.target.id) {
       case "email":
@@ -45,10 +46,18 @@ export default function LoginPage(props) {
     }
     
   }
-  function handleClick(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+
     // console.log('email: ', email);
     // console.log('password: ', password);
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -66,7 +75,7 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
-                <form className={classes.form}>
+                <form className={classes.form}  onSubmit={handleSubmit}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
                     <div className={classes.socialLine}>
@@ -141,8 +150,8 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg" onClick={handleClick}>
-                      Get started
+                    <Button simple color="primary" size="lg" type="submit"> 
+                      Login
                     </Button>
                   </CardFooter>
                 </form>

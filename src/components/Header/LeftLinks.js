@@ -51,7 +51,7 @@ export default function LeftLinks(props) {
         />
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/landing-page" className={classes.navLink}>
+        <Link to="/search-page" className={classes.navLink}>
           Search
         </Link>
       </ListItem>

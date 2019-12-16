@@ -37,6 +37,12 @@ export default function SeriesProfile(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+  });
+
+
   useEffect(() => {
     const fetchData = async () => {
       setIsError(false);

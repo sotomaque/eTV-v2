@@ -27,11 +27,18 @@ export default function RightLinks({currentUser}) {
             Sign Out
         </Link>
     </ListItem> : 
+    <div>
         <ListItem className={classes.listItem}>
           <Link to="/login-page" className={classes.navLink}>
             Login
           </Link>
         </ListItem>
+        <ListItem className={classes.listItem}>
+        <Link to="/signup-page" className={classes.navLink}>
+          SignUp
+        </Link>
+      </ListItem>
+      </div>
       }
         
     </List>

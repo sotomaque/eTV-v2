@@ -17,12 +17,15 @@ import RightLinks from "components/Header/RightLinks";
 
 import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 import { createBrowserHistory } from "history";
+import SignUpPage from "views/SignupPage/SignupPage";
+import Search from "views/SearchPage/Search";
 var hist = createBrowserHistory();
 
 export default function App() {
    
     const [user, setUser] = useState(null);
     var unsubscribeFromAuth = null;
+
 
     useEffect(() => {
         unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -75,6 +78,9 @@ export default function App() {
                 <Route path="/genre/series/:genre_id/:genre_name" component={ExploreGenreSeries} />
                 <Route path="/genre/movies/:genre_id" component={ExploreGenreMovies} />
                 <Route path="/login-page" component={LoginPage} />
+                <Route path="/signup-page" component={SignUpPage} />
+                <Route path="/search-page" component={Search} />
+                
                 <Route path="/landing-page" component={LandingPage} />
                 <Route exact path="/" component={HomePage} />
             </Switch>
