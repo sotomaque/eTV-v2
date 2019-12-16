@@ -2,13 +2,9 @@ import {
   primaryColor,
   grayColor,
   container,
-  cardTitle,
-  whiteColor,
   blackColor,
   hexToRgb
 } from "assets/jss/material-kit-pro-react.js";
-
-import customCheckboxRadioSwitchStyle from "assets/jss/material-kit-pro-react/customCheckboxRadioSwitchStyle.js";
 
 const signupPageStyle = {
   container: {
@@ -16,7 +12,8 @@ const signupPageStyle = {
     zIndex: "2",
     position: "relative",
     paddingTop: "20vh",
-    color: whiteColor
+    color: "#FFFFFF",
+    paddingBottom: "200px"
   },
   cardHidden: {
     opacity: "0",
@@ -32,7 +29,7 @@ const signupPageStyle = {
     border: "0",
     alignItems: "center",
     "&:before": {
-      background: "rgba(" + hexToRgb(blackColor) + ", 0.5)"
+      background: "rgba(0, 0, 0, 0.5)"
     },
     "&:after": {
       background:
@@ -51,6 +48,14 @@ const signupPageStyle = {
       left: "0",
       top: "0",
       content: '""'
+    },
+    "& footer li a,& footer li a:hover,& footer li a:active": {
+      color: "#FFFFFF"
+    },
+    "& footer": {
+      position: "absolute",
+      bottom: "0",
+      width: "100%"
     }
   },
   cardSignup: {
@@ -66,26 +71,39 @@ const signupPageStyle = {
     marginBottom: "100px",
     padding: "40px 0px"
   },
-  cardTitle: {
-    ...cardTitle,
-    textDecoration: "none",
-    textAlign: "center !important",
-    marginBottom: "0.75rem"
+  form: {
+    margin: "0"
   },
-  ...customCheckboxRadioSwitchStyle,
-  socials: {
-    marginTop: "0",
-    position: "absolute",
-    width: "100%",
-    transform: "none",
-    left: "0",
-    top: "0",
-    height: "100%",
-    lineHeight: "41px",
-    fontSize: "20px"
+  cardHeader: {
+    width: "auto",
+    textAlign: "center",
+    marginLeft: "20px",
+    marginRight: "20px",
+    marginTop: "-40px",
+    padding: "20px 0",
+    marginBottom: "15px"
+  },
+  divider: {
+    marginTop: "30px",
+    marginBottom: "0px",
+    textAlign: "center"
   },
   textCenter: {
     textAlign: "center"
+  },
+  cardFooter: {
+    paddingTop: "0rem",
+    border: "0",
+    borderRadius: "6px",
+    justifyContent: "center !important"
+  },
+  socialLine: {
+    marginTop: "1rem",
+    textAlign: "center",
+    padding: "0"
+  },
+  inputIconsColor: {
+    color: "#495057"
   },
   inputAdornment: {
     marginRight: "18px",
@@ -93,55 +111,7 @@ const signupPageStyle = {
   },
   inputAdornmentIcon: {
     color: grayColor[13]
-  },
-  form: {
-    margin: "0"
-  },
-  infoArea: {
-    padding: "0px 0px 20px !important"
-  },
-  block: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    textDecoration: "none",
-    position: "relative",
-    display: "block"
-  },
-  inlineBlock: {
-    display: "inline-block",
-    padding: "0px",
-    width: "auto"
-  },
-  list: {
-    marginBottom: "0",
-    padding: "0",
-    marginTop: "0"
-  },
-  left: {
-    float: "left!important",
-    display: "block",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
-  right: {
-    padding: "15px 0",
-    margin: "0",
-    float: "right",
-    "&,& *,& *:hover,& *:focus": {
-      color: whiteColor + "  !important"
-    }
-  },
-  icon: {
-    width: "18px",
-    height: "18px",
-    top: "3px",
-    position: "relative"
-  }
+  } 
 };
 
 export default signupPageStyle;

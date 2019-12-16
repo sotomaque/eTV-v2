@@ -2,22 +2,14 @@ import React, { useState }  from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
-import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
-import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
-import Check from "@material-ui/icons/Check";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
-import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -28,27 +20,22 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
-import styles from "assets/jss/material-kit-react/views/loginPage.js";
-import image from "assets/img/bg7.jpg";
+import { auth, signInWithGoogle } from "firebase/firebase.utils.js";
 
-const useStyles = makeStyles(styles);
+import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageStyle.js";
+import image from "assets/img/bg7.jpg";
+import { createUserProfileDocument } from "firebase/firebase.utils";
+
+const useStyles = makeStyles(signupPageStyle);
 
 export default function SignUpPage() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+
   const [displayName, setDisplayName] = useState({ hits: [] });
   const [email, setEmail] = useState({ hits: [] });
   const [password, setPassword] = useState({ hits: [] });
+  const [confirmPassword, setconfirmPassword] = useState({ hits: [] });
 
-  // const handleToggle = value => {
-  //   const currentIndex = checked.indexOf(value);
-  //   const newChecked = [...checked];
-  //   if (currentIndex === -1) {
-  //     newChecked.push(value);
-  //   } else {
-  //     newChecked.splice(currentIndex, 1);
-  //   }
-  //   setChecked(newChecked);
-  // };
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
@@ -57,11 +44,21 @@ export default function SignUpPage() {
   function handleChange(event) {
     switch (event.target.id) {
       case "email":
-        setEmail(event.target.value)
+        setEmail(event.target.value);
+        break;
+
       case "password":
-        setPassword(event.target.value)
+        setPassword(event.target.value);
+        break;
+
       case "displayName":
-        setDisplayName(event.target.value)
+        setDisplayName(event.target.value);
+        break;
+
+      case "confirmPassword":
+        setconfirmPassword(event.target.value);
+        break;
+
       default:
         break;
     }
@@ -72,7 +69,25 @@ export default function SignUpPage() {
 
     console.log('email: ', email);
     console.log('password: ', password);
-    console.log('name: ', displayName)
+    console.log('confirm password: ', confirmPassword);
+    console.log('name: ', displayName);
+
+    if (password !== confirmPassword) {
+      alert("Passwords Don't Match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      createUserProfileDocument(user, {displayName});
+      setEmail(null);
+      setPassword(null);
+      setconfirmPassword(null);
+      setDisplayName(null);
+
+    } catch (error) {
+      console.log(error)
+    }
     // try {
     //   await auth.signInWithEmailAndPassword(email, password)
     //   setEmail('');
@@ -144,11 +159,12 @@ export default function SignUpPage() {
                               <InputAdornment
                                 position="start"
                                 className={classes.inputAdornment}
+                              
                               >
                                 <Face className={classes.inputAdornmentIcon} />
                               </InputAdornment>
                             ),
-                            placeholder: "First Name..."
+                            placeholder: "First Name...", required: true
                           }}
                         />
                         <CustomInput
@@ -191,6 +207,28 @@ export default function SignUpPage() {
                               </InputAdornment>
                             ),
                             placeholder: "Password..."
+                          }}
+                        />
+                        <CustomInput
+                          formControlProps={{
+                            fullWidth: true,
+                            className: classes.customFormControlClasses
+                          }}
+                          inputProps={{
+                            onChange: (event) => {handleChange(event)},
+                            id: "confirmPassword",
+                            type: "password",
+                            startAdornment: (
+                              <InputAdornment
+                                position="start"
+                                className={classes.inputAdornment}
+                              >
+                                <Icon className={classes.inputAdornmentIcon}>
+                                  lock_outline
+                                </Icon>
+                              </InputAdornment>
+                            ),
+                            placeholder: "Confrim Password"
                           }}
                         />
                   </CardBody>

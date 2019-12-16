@@ -21,7 +21,7 @@ export default function Search(props) {
   const { ...rest } = props;
 
   var arr = [
-    <SectionSearchMovies />
+    
   ];
 
   function randomize(array) {
@@ -46,7 +46,7 @@ export default function Search(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        {randomize(arr)}
+      <SectionSearchMovies />
       </div>
       
       <Footer />

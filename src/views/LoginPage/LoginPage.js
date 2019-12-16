@@ -44,8 +44,8 @@ export default function LoginPage(props) {
       default:
         break;
     }
-    
   }
+  
   async function handleSubmit(event) {
     event.preventDefault();
 
