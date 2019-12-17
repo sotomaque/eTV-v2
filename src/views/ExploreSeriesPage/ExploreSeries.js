@@ -20,9 +20,9 @@ export default function ExploreSeries(props) {
   const classes = useStyles();
   const { ...rest } = props;
 
-  var arr = [
-      <SectionPopularKidsSeries />
-  ];
+  // var arr = [
+  //     <SectionPopularKidsSeries />
+  // ];
 
   function randomize(array) {
     return array.sort(() => Math.random() - 0.5);
@@ -46,7 +46,8 @@ export default function ExploreSeries(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        {randomize(arr)}
+       <SectionPopularKidsSeries />
+        {/* {randomize(arr)} */}
       </div>
       
       <Footer />

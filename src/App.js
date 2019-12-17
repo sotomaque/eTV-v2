@@ -19,7 +19,12 @@ import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 import { createBrowserHistory } from "history";
 import SignUpPage from "views/SignupPage/SignupPage";
 import Search from "views/SearchPage/Search";
+
+import { MyProvider } from 'store/context.js';
+
 var hist = createBrowserHistory();
+
+
 
 export default function App() {
    
@@ -38,13 +43,10 @@ export default function App() {
                             ...snapShot.data()
                         }
                     })
-                  
                 })
-                
             } else {
                 setUser(userAuth);
             }
-            
         });
 
         return function cleanup() {
@@ -57,33 +59,36 @@ export default function App() {
     
     return (
         <Router history={hist}>
-            <Header
-                brand="eTV"
-                color="transparent"
-                leftLinks={<LeftLinks />}
-                rightLinks={<RightLinks currentUser={user} />}
-                fixed
-                changeColorOnScroll={{
-                height: 200,
-                color: "white"
-                }}
-                
-            />
-            <Switch>
-                <Route path="/cast/:cast_id" component={CastProfile} />
-                <Route path="/movies/:movie_id" component={MovieProfile} />
-                <Route path="/series/:series_id" component={SeriesProfile} />
-                <Route path="/explore/movies" component={ExploreMovies} />
-                <Route path="/explore/series" component={ExploreSeries} />
-                <Route path="/genre/series/:genre_id/:genre_name" component={ExploreGenreSeries} />
-                <Route path="/genre/movies/:genre_id" component={ExploreGenreMovies} />
-                <Route path="/login-page" component={LoginPage} />
-                <Route path="/signup-page" component={SignUpPage} />
-                <Route path="/search-page" component={Search} />
-                
-                <Route path="/landing-page" component={LandingPage} />
-                <Route exact path="/" component={HomePage} />
-            </Switch>
+            <MyProvider>
+                <Header
+                    brand="eTV"
+                    color="transparent"
+                    leftLinks={<LeftLinks />}
+                    rightLinks={<RightLinks currentUser={user} />}
+                    fixed
+                    changeColorOnScroll={{
+                    height: 200,
+                    color: "white"
+                    }}
+                    
+                />
+                <Switch>
+                    <Route path="/cast/:cast_id" component={CastProfile} />
+                    <Route path="/movies/:movie_id" component={MovieProfile} />
+                    <Route path="/series/:series_id" component={SeriesProfile} />
+                    <Route path="/explore/movies" component={ExploreMovies} />
+                    <Route path="/explore/series" component={ExploreSeries} />
+                    <Route path="/genre/series/:genre_id/:genre_name" component={ExploreGenreSeries} />
+                    <Route path="/genre/movies/:genre_id" component={ExploreGenreMovies} />
+                    <Route path="/login-page" component={LoginPage} />
+                    <Route path="/signup-page" component={SignUpPage} />
+                    <Route path="/search-page" component={Search} />
+                    
+                    <Route path="/landing-page" component={LandingPage} />
+                    <Route exact path="/" component={HomePage} />
+                </Switch>
+            
+            </MyProvider>
         </Router>
     )
      

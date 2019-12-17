@@ -26,12 +26,12 @@ export default function HomePage(props) {
 
   const classes = useStyles();
   const { ...rest } = props;
-  var arr = [<SectionTrendingNowMovies />,
-    <SectionTrendingNowSeries />,
-    <SectionMoviesGrid />,
-    <SectionSeriesGrid />
+  // var arr = [<SectionTrendingNowMovies />,
+  //   <SectionTrendingNowSeries />,
+  //   <SectionMoviesGrid />,
+  //   <SectionSeriesGrid />
     
-  ];
+  // ];
   function randomize(array) {
     return array.sort(() => Math.random() - 0.5);
   }
@@ -53,8 +53,11 @@ export default function HomePage(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        
-        {randomize(arr)}
+      <SectionTrendingNowMovies />,
+    <SectionTrendingNowSeries />,
+    <SectionMoviesGrid />,
+    <SectionSeriesGrid />
+        {/* {randomize(arr)} */}
       </div>
       <Footer />
     </div>
