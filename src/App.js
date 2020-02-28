@@ -20,8 +20,6 @@ import { createBrowserHistory } from "history";
 import SignUpPage from "views/SignupPage/SignupPage";
 import Search from "views/SearchPage/Search";
 
-import { MyProvider } from 'store/context.js';
-
 var hist = createBrowserHistory();
 
 
@@ -59,7 +57,6 @@ export default function App() {
     
     return (
         <Router history={hist}>
-            <MyProvider>
                 <Header
                     brand="eTV"
                     color="transparent"
@@ -87,8 +84,6 @@ export default function App() {
                     <Route path="/landing-page" component={LandingPage} />
                     <Route exact path="/" component={HomePage} />
                 </Switch>
-            
-            </MyProvider>
         </Router>
     )
      

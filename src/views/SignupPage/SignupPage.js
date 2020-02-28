@@ -19,8 +19,6 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import { auth } from "firebase/firebase.utils.js";
 
-import { MyContext } from 'store/context.js';
-
 import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageStyle.js";
 import image from "assets/img/bg7.jpg";
 import { createUserProfileDocument } from "firebase/firebase.utils";
@@ -236,16 +234,6 @@ export default function SignUpPage() {
                       Sign Up
                     </Button>
                   </CardFooter>
-                  <MyContext.Consumer>
-                    {(context) => (
-                        <React.Fragment>
-                            <p>Name: {context.state.name}</p>
-                            <p>Age: {context.state.age}</p>
-                            <Button onClick={context.growAYear} >Grow</Button>
-                        </React.Fragment>
-                        
-                    ) }
-                  </MyContext.Consumer>
                 </form>
               </Card>
             </GridItem>

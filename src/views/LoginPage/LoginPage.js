@@ -49,8 +49,6 @@ export default function LoginPage(props) {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    // console.log('email: ', email);
-    // console.log('password: ', password);
     try {
       await auth.signInWithEmailAndPassword(email, password)
       setEmail('');
