@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/eTV-v2/static/css/main.a0c559b9.chunk.css",
+    "main.js": "/eTV-v2/static/js/main.0d63d56e.chunk.js",
+    "main.js.map": "/eTV-v2/static/js/main.0d63d56e.chunk.js.map",
+    "runtime-main.js": "/eTV-v2/static/js/runtime-main.c55dd9c2.js",
+    "runtime-main.js.map": "/eTV-v2/static/js/runtime-main.c55dd9c2.js.map",
+    "static/js/2.5347ad6c.chunk.js": "/eTV-v2/static/js/2.5347ad6c.chunk.js",
+    "static/js/2.5347ad6c.chunk.js.map": "/eTV-v2/static/js/2.5347ad6c.chunk.js.map",
+    "index.html": "/eTV-v2/index.html",
+    "precache-manifest.7fbfb4d7b092b624ee5321c2a0bc3dc5.js": "/eTV-v2/precache-manifest.7fbfb4d7b092b624ee5321c2a0bc3dc5.js",
+    "service-worker.js": "/eTV-v2/service-worker.js",
+    "static/css/main.a0c559b9.chunk.css.map": "/eTV-v2/static/css/main.a0c559b9.chunk.css.map",
+    "static/js/2.5347ad6c.chunk.js.LICENSE": "/eTV-v2/static/js/2.5347ad6c.chunk.js.LICENSE",
+    "static/media/avatar.jpg": "/eTV-v2/static/media/avatar.cc93a967.jpg",
+    "static/media/bg2.jpg": "/eTV-v2/static/media/bg2.84378183.jpg",
+    "static/media/bg3.jpg": "/eTV-v2/static/media/bg3.e76de24b.jpg",
+    "static/media/bg4.jpg": "/eTV-v2/static/media/bg4.199e9ec1.jpg",
+    "static/media/bg7.jpg": "/eTV-v2/static/media/bg7.b08234a2.jpg",
+    "static/media/card-profile2-square.jpg": "/eTV-v2/static/media/card-profile2-square.788e3d36.jpg",
+    "static/media/city.jpg": "/eTV-v2/static/media/city.58a713c7.jpg",
+    "static/media/clem-onojegaw.jpg": "/eTV-v2/static/media/clem-onojegaw.0d005146.jpg",
+    "static/media/clem-onojeghuo.jpg": "/eTV-v2/static/media/clem-onojeghuo.f8f6718a.jpg",
+    "static/media/cynthia-del-rio.jpg": "/eTV-v2/static/media/cynthia-del-rio.3a7ae9b9.jpg",
+    "static/media/kendall.jpg": "/eTV-v2/static/media/kendall.5a0e395b.jpg",
+    "static/media/landing-bg.jpg": "/eTV-v2/static/media/landing-bg.df8fd3ef.jpg",
+    "static/media/marc.jpg": "/eTV-v2/static/media/marc.101b9dc3.jpg",
+    "static/media/mariya-georgieva.jpg": "/eTV-v2/static/media/mariya-georgieva.a30894f5.jpg",
+    "static/media/olu-eletu.jpg": "/eTV-v2/static/media/olu-eletu.d9bcce95.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c55dd9c2.js",
+    "static/js/2.5347ad6c.chunk.js",
+    "static/css/main.a0c559b9.chunk.css",
+    "static/js/main.0d63d56e.chunk.js"
+  ]
+}
